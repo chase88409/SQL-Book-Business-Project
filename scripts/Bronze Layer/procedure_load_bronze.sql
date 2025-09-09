@@ -87,6 +87,23 @@ BEGIN
 		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
 		PRINT '>> ---------------------------';
 
+		SET @start_time = GETDATE();
+		PRINT '>> Truncating Table: bronze.stock';
+		TRUNCATE TABLE bronze.stock
+	
+		PRINT '>> Inserting Data into Table: bronze.stock';
+		BULK INSERT bronze.stock
+		FROM 'C:\Users\marta\OneDrive\Escritorio\sql-book-biz-project\datasets\remaining_stock.csv'
+		WITH(
+			FIRSTROW = 2,
+			FIELDTERMINATOR = ',',
+			TABLOCK
+		);
+		SET @end_time = GETDATE();
+		PRINT '>> Load Duration: ' + CAST(DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds';
+		PRINT '>> ---------------------------';
+
+
 		SET @batch_end_time = GETDATE();
 		PRINT '================================';
 		PRINT 'Loading Bronze Layer is Complete';
