@@ -51,7 +51,7 @@ SELECT
 	exp_price AS Price,
 	exp_tax AS Tax,
 	exp_total AS Total,
-	exp_object AS Object,
+	exp_object AS Item,
 	exp_per_unit AS Price_per_unit
 FROM silver.expenses
 GO
@@ -70,7 +70,7 @@ SELECT
 	cst_name AS Full_Name,
 	cst_address AS Street_Address,
 	UPPER(cst_city) AS City,
-	cst_state AS 'State',
+	cst_state AS States,
 	cst_zip as Zip_Code
 FROM silver.sales_2010
 WHERE cst_state IS NOT NULL
