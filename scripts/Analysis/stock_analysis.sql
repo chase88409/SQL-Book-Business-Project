@@ -20,7 +20,7 @@ SELECT
 FROM gold.dim_stock
 
 SELECT
-     COUNT(CASE WHEN Sold_Price = 0 THEN 1 ELSE NULL END) AS Unsold_Books -- Books unsold from gold.fact_book_buying
+     COUNT(CASE WHEN Sold_Price = 0 THEN 1 ELSE NULL END) AS Unsold_Books_from_book_buying -- Books unsold from gold.fact_book_buying
 FROM gold.fact_book_buying
 -- Shows that many books were unaccounted for in book_buying table. At end of book business I stopped keeping track
 -- of much of the data as I was working full time as a teacher. Also, hundreds of books listed in stock were given to my by
